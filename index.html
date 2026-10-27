@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b0b0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Linux Debian">
+<meta name="format-detection" content="telephone=no">
+<title>LINUX_DEBIAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050816;--tx:#e8f0ff;--mu:#9aa8c7;--ga:rgba(255,255,255,.16);--gb:rgba(255,255,255,.04);--bd:rgba(255,255,255,.24);--ac:#5ef2ff;--ac2:#8b7bff;--ok:#5dffb0;--no:#ff6b8b;--sh:rgba(0,0,0,.45);--o1:#2a6bff;--o2:#9b5cff;--o3:#00e0c6;--cd:rgba(0,0,0,.35);box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#e6eeff;--tx:#0d1b3d;--mu:#4a5b82;--ga:rgba(255,255,255,.8);--gb:rgba(255,255,255,.35);--bd:rgba(255,255,255,.95);--ac:#0069b3;--ac2:#5b3df5;--ok:#007a50;--no:#c9163f;--sh:rgba(40,70,140,.25);--cd:rgba(13,27,61,.07)}}
+:root[data-theme=light]{--bg:#e6eeff;--tx:#0d1b3d;--mu:#4a5b82;--ga:rgba(255,255,255,.8);--gb:rgba(255,255,255,.35);--bd:rgba(255,255,255,.95);--ac:#0069b3;--ac2:#5b3df5;--ok:#007a50;--no:#c9163f;--sh:rgba(40,70,140,.25);--cd:rgba(13,27,61,.07)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--tx);font:400 16px/1.5 "Space Grotesk",system-ui,sans-serif}
+body::before{content:"";position:fixed;top:0;right:0;bottom:0;left:0;z-index:-1;background-image:linear-gradient(rgba(94,242,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(94,242,255,.07) 1px,transparent 1px);background-size:38px 38px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%)}
+.o{position:fixed;border-radius:50%;filter:blur(70px);opacity:.55;z-index:-1;animation:dr 22s ease-in-out infinite alternate}
+.o1{width:340px;height:340px;background:var(--o1);top:-90px;left:-90px}
+.o2{width:300px;height:300px;background:var(--o2);bottom:4%;right:-90px;animation-delay:-8s}
+.o3{width:220px;height:220px;background:var(--o3);top:46%;left:28%;opacity:.3;animation-delay:-14s}
+@keyframes dr{to{transform:translate(60px,-50px) scale(1.2)}}
+main{max-width:720px;margin:0 auto;padding:18px 16px 40px;display:grid;gap:14px}
+.mono,code,h1{font-family:"JetBrains Mono",ui-monospace,monospace}
+h1{font-size:clamp(17px,4.6vw,24px);margin:6px 2px 2px;font-weight:700;color:var(--ac)}
+h1 span{display:block;font-size:.62em;font-weight:500;color:var(--ok)}.lg{width:1.25em;height:1.25em;display:inline-block;vertical-align:-.3em;margin-right:.28em}
+.cur{display:inline-block;width:.6em;height:1.05em;margin-left:3px;background:var(--ac);vertical-align:-.15em;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.g{background:linear-gradient(135deg,var(--ga),var(--gb));-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--bd);border-radius:26px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -10px 24px rgba(255,255,255,.04),0 24px 60px var(--sh);position:relative;overflow:hidden}
+.g::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(120% 60% at 18% -10%,rgba(255,255,255,.26),transparent 55%);pointer-events:none}
+.seg{display:flex;gap:4px;padding:4px;border-radius:999px}
+.seg button{flex:1;border:0;background:none;color:var(--mu);padding:10px 6px;border-radius:999px;font:600 14px "Space Grotesk",sans-serif;cursor:pointer;position:relative}
+.seg{position:relative}.seg button{z-index:1}.seg .on{color:var(--ac);font-weight:700}.seg .pill{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:999px;pointer-events:none;background:linear-gradient(135deg,rgba(94,242,255,.38),rgba(139,123,255,.38));box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 0 20px rgba(94,242,255,.35);transition:transform .5s cubic-bezier(.34,1.35,.5,1),width .5s cubic-bezier(.34,1.35,.5,1)}@media (prefers-reduced-motion:reduce){.seg .pill{transition:none}}
+button:focus-visible,summary:focus-visible,input:focus-visible,.card:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.pr{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mu);padding:0 6px}
+.bar{flex:1;height:8px;border-radius:9px;background:var(--cd);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--ac),var(--ac2));box-shadow:0 0 14px var(--ac);transition:width .5s}
+.card{min-height:350px;padding:26px 22px;display:flex;flex-direction:column;justify-content:center;gap:10px;cursor:pointer}
+.pop{animation:fl .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes fl{from{transform:rotateY(80deg) scale(.96);opacity:.2}to{transform:none;opacity:1}}
+.k{font-size:13px;color:var(--mu);margin-top:6px}
+.big{font:700 clamp(19px,5.4vw,28px)/1.25 "JetBrains Mono",monospace;word-break:break-word;color:var(--ac)}
+.hint{color:var(--mu);font-size:14px;margin-top:8px}
+p{margin:0}
+code{display:block;font-size:13px;line-height:1.5;background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:11px 13px;word-break:break-all;color:var(--ac)}
+.row{display:flex;gap:10px}
+.b{flex:1;padding:14px 10px;border-radius:18px;border:1px solid var(--bd);background:linear-gradient(135deg,var(--ga),var(--gb));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:var(--tx);font:600 15px "Space Grotesk",sans-serif;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+.b:active{transform:scale(.97)}
+.b.ok{color:var(--ok)}.b.no{color:var(--no)}.b.on{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 0 16px var(--ac)}
+.q{padding:22px;display:grid;gap:12px}
+.opt{text-align:left;font-family:"JetBrains Mono",monospace;font-size:14px;word-break:break-word}
+.opt.ok{border-color:var(--ok);box-shadow:0 0 18px var(--ok)}.opt.no{border-color:var(--no);box-shadow:0 0 18px var(--no)}
+input{width:100%;padding:14px 16px;border-radius:18px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);font:16px "Space Grotesk",sans-serif}
+details{padding:14px 16px}
+summary{cursor:pointer;font:600 14px "JetBrains Mono",monospace;color:var(--ac);word-break:break-word}
+details>*+*{margin-top:9px}
+.sc{display:flex;justify-content:space-between;color:var(--mu);font-size:14px}
+@media(prefers-reduced-motion:reduce){.o,.cur,.pop{animation:none}.bar i{transition:none}}
+.o{filter:none;will-change:transform}.o1{width:440px;height:440px;background:radial-gradient(circle,var(--o1),transparent 68%)}.o2{width:400px;height:400px;background:radial-gradient(circle,var(--o2),transparent 68%)}.o3{width:300px;height:300px;background:radial-gradient(circle,var(--o3),transparent 68%)}
+.b{-webkit-backdrop-filter:none;backdrop-filter:none}
+details.g{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4);content-visibility:auto;contain-intrinsic-size:auto 56px}
+button,.card{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+code{white-space:pre-wrap}.col{display:grid;gap:14px}#pg:empty{display:none}
+.gh{font:600 15px 'Space Grotesk',sans-serif;color:var(--ac2);margin:8px 4px 0}
+.seg button{padding:10px 2px;font-size:13px}.pr span{white-space:nowrap}
+.rs{border:1px solid var(--bd);background:var(--cd);color:var(--mu);border-radius:999px;padding:6px 12px;font:600 12px 'Space Grotesk',sans-serif;cursor:pointer;white-space:nowrap}.cf{color:var(--no);border-color:var(--no)}
+#sp{position:fixed;top:0;right:0;bottom:0;left:0;z-index:9;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 35%,rgba(94,242,255,.14),transparent 60%),var(--bg);transition:opacity .45s}#sp.out{opacity:0;pointer-events:none}
+.spc{width:min(340px,100%);padding:28px 24px;display:grid;gap:14px;text-align:center}.pcn{font-size:56px;font-weight:700;color:var(--ac);text-shadow:0 0 24px var(--ac)}.sm{color:var(--mu);font-size:14px;min-height:21px}#sb{width:100%;transform:scaleX(0);transform-origin:left;transition:none}
+.sc{flex-wrap:wrap;gap:6px}textarea{width:100%;min-height:90px;padding:12px;border-radius:16px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);font:13px 'JetBrains Mono',monospace;resize:vertical}.bm{font-size:13px;color:var(--mu);min-height:19px}
+#sp{cursor:pointer}
+.seg{flex-wrap:wrap;border-radius:26px}.seg button{flex:1 1 auto;padding:10px}.nt{margin-top:10px;padding:10px 12px;border-radius:14px;border:1px solid var(--ok);background:linear-gradient(135deg,rgba(93,255,176,.16),rgba(94,242,255,.1));font-size:13px;line-height:1.45}
+.tm{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px;height:260px;overflow:auto;contain:strict;font:13px/1.45 monospace;user-select:text;-webkit-user-select:text}.tm div{white-space:pre-wrap;word-break:break-word}.tm div:first-child{color:var(--ac2)}body.kb .o{display:none!important}body.kb *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important;animation:none!important}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}button,a,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}input,textarea,select{font-size:16px;-webkit-appearance:none;appearance:none}button{font-family:inherit}</style></head><body>
+<div class="o o1"></div><div class="o o2"></div><div class="o o3"></div>
+<div id='sp' aria-label='Cargando'><div class='g spc'><div class='mono sm' id='sm'>Abriendo TCP/22…</div><div class='pcn mono'><span id='sn'>0</span>%</div><div class='bar'><i id='sb'></i></div></div></div>
+<main>
+<h1><span>adpc@trixie:~$</span><svg class="lg" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c-4 0-6 3.5-6 8 0 3-1.5 5-3 8-1.5 3-1 6 2 7.5 2 1 4.5 1.5 7 1.5s5-.5 7-1.5c3-1.5 3.5-4.5 2-7.5-1.5-3-3-5-3-8 0-4.5-2-8-6-8z" fill="#20232e" stroke="#9aa8c7" stroke-width=".9"/><ellipse cx="16" cy="20.5" rx="5.2" ry="7" fill="#f4f6fb"/><circle cx="13.6" cy="10.5" r="1.5" fill="#fff"/><circle cx="18.4" cy="10.5" r="1.5" fill="#fff"/><circle cx="13.9" cy="10.7" r=".7" fill="#111"/><circle cx="18.1" cy="10.7" r=".7" fill="#111"/><path d="M16 12.2c-2 0-3.2 1-3.2 1.8 0 1 1.7 1.6 3.2 1.6s3.2-.6 3.2-1.6c0-.8-1.2-1.8-3.2-1.8z" fill="#f5a623"/><ellipse cx="12" cy="29.2" rx="3.8" ry="1.8" fill="#f5a623"/><ellipse cx="20" cy="29.2" rx="3.8" ry="1.8" fill="#f5a623"/></svg><svg class="lg" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 5c-6-.5-11 4-11 10s5 11 11 10c5-1 8-5 7.5-9-.5-3.5-3.5-6-7-5.5-3 .5-4.5 3-4 5.5" fill="none" stroke="#d70a53" stroke-width="2.6" stroke-linecap="round"/></svg>LINUX_DEBIAN<b class="cur"></b></h1>
+<div id="app"></div>
+</main>
+<script>
+const D=[
+["Include /etc/ssh/sshd_config.d/*.conf","Carga archivos adicionales que coincidan con el patrón; separa ajustes por finalidad y paquetes. El orden importa: para muchas opciones OpenSSH usa el primer valor obtenido, no el último.","Mantener configuración modular; revisar todos los archivos incluidos.","sudo grep -RniE '^[[:space:]]*(Include|Port|PasswordAuthentication|PermitRootLogin)' /etc/ssh/sshd_config /etc/ssh/sshd_config.d/"],
+["Port 22","Define el puerto TCP del servidor; se pueden declarar varios Port. Cambiarlo exige ajustar cliente y firewall y no añade cifrado.","Dejar 22 en un laboratorio LAN salvo razón operativa concreta.","sudo ss -tlnp | grep ':22'"],
+["AddressFamily any","Permite IPv4 e IPv6 si están disponibles. inet limita a IPv4; inet6 a IPv6.","any suele ser apropiado; limitar solo conscientemente."],
+["ListenAddress","Direcciones locales donde escucha sshd. 0.0.0.0 = todas las IPv4; :: = IPv6. Sin especificar, escucha en todas las disponibles.","No fijar una IP si cambia por DHCP; restringir solo si la topología lo exige.","sudo ss -ltnp | grep sshd"],
+["HostKey","Claves privadas de identidad del servidor (ej. /etc/ssh/ssh_host_ed25519_key); no son las claves personales del usuario. Demuestran la identidad del servidor al cliente.","No compartir claves privadas de host; las públicas sí se pueden distribuir.","sudo ls -l /etc/ssh/ssh_host_*"],
+["RekeyLimit","Limita datos y/o tiempo tras los que se renegocian las claves de sesión. default usa los valores internos de OpenSSH.","Conservar el predeterminado salvo requisito específico."],
+["SyslogFacility AUTH","Categoría usada para registrar eventos de sshd; puede aparecer AUTHPRIV según plataforma.","Sirve para clasificar registros de autenticación.","sudo journalctl -u ssh"],
+["LogLevel INFO","Cantidad de detalle que registra sshd. Más detalle ayuda a diagnosticar, pero genera más registros.","INFO para uso normal; subir temporalmente si se investiga un fallo."],
+["LoginGraceTime 2m","Tiempo máximo para completar la autenticación antes de cerrar la conexión. 2m = dos minutos.","Evita conexiones sin autenticar indefinidas; no es la duración de una sesión ya iniciada."],
+["PermitRootLogin prohibit-password","Controla el acceso SSH directo de root. prohibit-password impide contraseña e interactiva, pero permite claves públicas autorizadas. no prohíbe el inicio directo.","Entrar con usuario personal y usar sudo; PermitRootLogin no es la política estricta habitual."],
+["StrictModes yes","Comprueba propietario y permisos de los archivos de autenticación (claves autorizadas) y rechaza situaciones inseguras.","Mantener yes; ~/.ssh en 700 y authorized_keys en 600.","sudo sshd -T | grep '^strictmodes'; ls -ld ~/.ssh; ls -l ~/.ssh/authorized_keys"],
+["MaxAuthTries 6","Limita intentos de autenticación por conexión. No es un límite global por minuto ni sustituye otros controles contra fuerza bruta.","3 reduce intentos por conexión, pero no reemplaza claves, firewall ni monitoreo."],
+["MaxSessions 10","Limita sesiones shell/login/subsistema multiplexadas por conexión de red autenticada; no es el total de usuarios ni de conexiones TCP.","El valor por defecto suele bastar en laboratorio."],
+["PubkeyAuthentication yes","Autenticación por clave pública: el cliente demuestra que posee la clave privada de una clave pública autorizada.","Habilitar y probar una clave antes de desactivar contraseñas."],
+["AuthorizedKeysFile","Dónde busca sshd las claves públicas autorizadas; habitualmente .ssh/authorized_keys en el directorio personal.","No es la clave privada: contiene claves públicas autorizadas para entrar.","sudo sshd -T | grep '^authorizedkeysfile'; cat ~/.ssh/authorized_keys"],
+["HostbasedAuthentication no","Desactiva la autenticación basada en la confianza del host cliente; no es la clave de host del servidor.","Mantener desactivada en un laboratorio sencillo."],
+["IgnoreRhosts yes","Ignora los archivos legacy .rhosts y .shosts.","Mantener yes para evitar confianza basada en esos archivos."],
+["PasswordAuthentication yes","Permite autenticar con contraseña. Viaja dentro del canal SSH protegido, no en texto plano.","Práctico para empezar; al endurecer, probar clave pública y luego valorar no."],
+["PermitEmptyPasswords no","Prohíbe la autenticación por contraseña a cuentas con contraseña vacía; no crea contraseñas ni sustituye políticas de cuentas.","Mantener no."],
+["KbdInteractiveAuthentication no","Desactiva keyboard-interactive, que presenta desafíos vía PAM u otros mecanismos. Distinto de PasswordAuthentication aunque parezca similar.","Mantener no salvo que se use un mecanismo interactivo/2FA; revisar PAM antes de cambiarlo."],
+["KerberosAuthentication","Autenticación basada en Kerberos cuando la infraestructura está configurada (dominios/entornos centralizados).","No suele ser necesario en un laboratorio doméstico aislado."],
+["GSSAPIAuthentication","Métodos GSSAPI, usados en integraciones como Kerberos y ciertos escenarios de inicio de sesión único.","Deshabilitado habitualmente si no hay integración corporativa."],
+["UsePAM yes","Integra sshd con PAM: autenticación, controles de cuenta, límites y sesión. El efecto depende de los módulos PAM instalados.","En Debian se mantiene yes; no deshabilitar sin comprender las consecuencias.","sudo sshd -T | grep '^usepam'; cat /etc/pam.d/sshd"],
+["X11Forwarding yes","Reenvía aplicaciones X11 por SSH si cliente, servidor y entorno gráfico lo soportan; no controla todo GNOME remotamente.","Deshabilitar si no se necesita; por terminal no es necesario."],
+["PrintMotd no","Controla si sshd imprime /etc/motd al iniciar sesión. Con PAM, el mensaje puede gestionarlo PAM.","Si se quiere bienvenida, revisar cómo se configura MOTD/banner para evitar duplicados.","sudo sshd -T | grep '^printmotd'; cat /etc/motd"],
+["AcceptEnv LANG LC_* COLORTERM NO_COLOR","Permite que el cliente envíe variables de entorno cuyos nombres coincidan con esos patrones; no acepta cualquier variable.","Facilita idioma, localización y color de terminal; no es autenticación."],
+["Subsystem sftp /usr/lib/openssh/sftp-server","Asocia el subsistema SFTP con el programa que lo implementa. SFTP lista, descarga y sube archivos sobre SSH; no es el FTP tradicional.","Conservar una definición válida para que el cliente sftp funcione.","sudo sshd -T | grep '^subsystem'; sftp adpc@192.168.0.58"],
+["Banner /ruta/al/archivo","Muestra un texto de aviso antes de la autenticación si está configurado y el archivo es legible. MOTD se muestra después de iniciar sesión.","Crear un aviso breve y legal; probar en una conexión nueva."]];
+const C=[
+["ip a","Muestra interfaces, estado y direcciones IP. Buscar inet 192.168.0.58/… en la interfaz activa."],
+["ip route","Muestra rutas IPv4; ayuda a verificar la ruta predeterminada y las redes conectadas."],
+["ping 192.168.0.58","Desde Windows: comprueba conectividad ICMP si el firewall responde. Que falle no prueba que SSH esté caído."],
+["Test-NetConnection 192.168.0.58 -Port 22","En PowerShell prueba TCP al puerto 22. TcpTestSucceeded : True indica que se estableció TCP."],
+["sudo systemctl status ssh","Muestra estado, PID y mensajes recientes del servicio."],
+["sudo systemctl enable --now ssh","Habilita el servicio al arrancar y lo inicia ahora. Solo si hace falta habilitar/iniciar."],
+["sudo ss -tlnp | grep ':22'","Sockets TCP en escucha, con direcciones y proceso (si hay permisos)."],
+["sudo sshd -t","Valida la configuración; ejecutar antes de reiniciar tras editar."],
+["sudo sshd -T","Consulta la configuración efectiva."],
+["sudo journalctl -u ssh -f","Sigue en vivo los registros de SSH. Ctrl+C detiene la vista sin cerrar la sesión SSH."],
+["whoami","Muestra el usuario efectivo de la shell actual."],
+["hostname","Muestra el nombre de host del sistema donde se ejecuta."],
+["hostname -I","Muestra las direcciones IP del equipo; puede listar más de una."],
+["uname -a","Muestra kernel, nombre de sistema y arquitectura/datos de compilación."],
+["echo $SSH_CONNECTION","En una shell remota: IP cliente, puerto cliente, IP servidor y puerto servidor."],
+["sftp adpc@192.168.0.58","Abre una sesión interactiva de transferencia de archivos mediante SFTP."]];
+const DK={dir:{n:"Directivas",it:D.map(([t,f,c,v])=>({t,f,c,v:v||"sudo sshd -T | grep '^"+t.split(" ")[0].toLowerCase()+"'"}))},cmd:{n:"Comandos",it:C.map(([t,f])=>({t,f}))}};
+const NM={11:`Bullseye`,12:`Bookworm`,13:`Trixie`},VL={11:`a`,12:`b`,13:`c`},VN={a:`11`,b:`12`,c:`13`},VD={11:[`g11`],12:[`g12`],13:[`g13`,`dir`,`cmd`]};
+const M=[
+[`cat /etc/debian_version`,`Muestra el número de versión de Debian instalado.`,`abc`],
+[`lsb_release -a`,`Muestra distribuidor, versión y nombre en clave (paquete lsb-release).`,`abc`],
+[`hostnamectl`,`Resume nombre del equipo, sistema operativo, kernel y arquitectura.`,`abc`],
+[`uname -r`,`Versión del kernel en uso.`,`abc`,`Resultado: serie 5.10 en Debian 11, 6.1 en 12 y 6.12 en 13.`],
+[`ssh -V`,`Versión de OpenSSH del cliente.`,`abc`,`Resultado: 8.4p1 en Debian 11, 9.2p1 en 12 y 10.0p1 en 13.`],
+[`sudo apt update`,`Descarga los índices de paquetes de los repositorios configurados; no instala nada.`,`abc`],
+[`sudo apt upgrade --without-new-pkgs`,`Actualización mínima: solo paquetes que no requieren instalar ni quitar otros. Primer paso antes de cambiar de versión.`,`abc`],
+[`sudo apt full-upgrade`,`Actualiza todo el sistema resolviendo dependencias; es el paso principal al subir de versión.`,`abc`],
+[`sudo apt autoremove`,`Quita las dependencias automáticas que ya no hacen falta.`,`abc`],
+[`apt-mark showhold`,`Lista paquetes retenidos, que pueden bloquear una actualización.`,`abc`],
+[`dpkg --audit`,`Muestra paquetes Half-Installed o con error de configuración; se revisa antes de actualizar.`,`abc`],
+[`dpkg --get-selections '*'`,`Lista el estado de todos los paquetes; se guarda como respaldo antes de actualizar.`,`abc`],
+[`sudo dpkg --configure --pending`,`Termina de configurar paquetes que quedaron a medias.`,`abc`],
+[`systemctl status ssh`,`Estado del servicio SSH en systemd.`,`abc`],
+[`journalctl -u ssh`,`Registros del servicio SSH en el journal de systemd.`,`abc`],
+[`journalctl --list-boots`,`Arranques guardados en el journal.`,`abc`,`Desde Debian 11 el journal persistente se activa por defecto.`],
+[`ip -br a`,`Resumen de interfaces y direcciones IP.`,`abc`],
+[`ss -tuln`,`Sockets TCP y UDP en escucha, en formato numérico.`,`abc`],
+[`sudo nft list ruleset`,`Muestra las reglas del firewall nftables.`,`abc`],
+[`ssh-keygen -t ed25519`,`Genera un par de claves Ed25519, recomendadas frente a DSA.`,`abc`],
+[`sudo sshd -t`,`Valida la configuración de sshd antes de reiniciar.`,`abc`],
+[`sudo sshd -T`,`Muestra la configuración efectiva de sshd.`,`abc`],
+[`findmnt /tmp`,`Indica cómo está montado /tmp.`,`abc`,`Cambia el resultado: en 13 es un tmpfs en memoria; en 11 y 12 es un directorio normal.`],
+[`sudo sysctl --system`,`Aplica los ajustes del kernel desde los directorios sysctl.d.`,`abc`,`Para ajustes propios usa /etc/sysctl.d/*.conf; en 13 systemd-sysctl ya no lee /etc/sysctl.conf.`],
+[`last`,`Últimos inicios de sesión, leídos de /var/log/wtmp.`,`ab`,`En Debian 13 ya no se incluye: se reemplazó por wtmpdb.`],
+[`deb http://security.debian.org/debian-security bullseye-security main`,`Línea de sources.list con las actualizaciones de seguridad de Debian 11: el suite se llama bullseye-security.`,`a`],
+[`sudo sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list`,`Cambia las fuentes APT de 11 a 12 antes de actualizar; si usas firmware no libre, añade también non-free-firmware.`,`a`],
+[`deb http://deb.debian.org/debian bookworm main non-free-firmware`,`Línea típica de Debian 12: el firmware no libre tiene su propio componente, non-free-firmware.`,`b`],
+[`sudo apt modernize-sources`,`Convierte las fuentes .list al formato deb822 (.sources), el recomendado en Debian 13.`,`c`],
+[`Suites: trixie trixie-updates`,`Línea de /etc/apt/sources.list.d/debian.sources que apunta a Debian 13 en formato deb822.`,`c`],
+[`wtmpdb`,`Reemplaza a last en Debian 13 (requiere también libpam-wtmpdb).`,`c`],
+[`lastlog2`,`Reemplaza a lastlog en Debian 13 (requiere también libpam-lastlog2).`,`c`],
+[`lslogins --failed`,`Cuentas con intentos fallidos; sustituye en la práctica a lastb en Debian 13.`,`c`],
+[`systemctl edit tmp.mount`,`Permite cambiar el tamaño del tmpfs de /tmp (por ejemplo size=2G) en Debian 13.`,`c`],
+[`udevadm test-builtin net_setup_link /sys/class/net/enp1s0`,`Comprueba antes de reiniciar si el nombre de la interfaz de red cambiaría tras subir a Debian 13.`,`c`],
+[`apt list '?obsolete'`,`Lista paquetes obsoletos del sistema; apt purge '?obsolete' los elimina.`,`c`],
+[`apt list '?config-files'`,`Lista paquetes eliminados que dejaron configuración; apt purge '?config-files' la limpia.`,`c`],
+[`wcurl URL`,`Descarga archivos con curl de forma sencilla; viene incluido en curl de Debian 13.`,`c`],
+[`curl --http3 URL`,`Hace una petición HTTP/3; curl y libcurl lo soportan en Debian 13.`,`c`]];
+const vs=s=>[...s].map(c=>VN[c]).join(`, `).replace(/, (\d+)$/,` y $1`);
+const mk=v=>M.filter(m=>m[2].includes(VL[v])).map(([t,f,s,e])=>({t,f,n:(s.length>1?`ESTE COMANDO ES LO MISMO PARA LAS VERSIONES `+vs(s)+`.`:`Solo para Debian `+vs(s)+`.`)+(e?` `+e:``)}));
+for(const v of [11,12,13])DK[`g`+v]={n:`Debian `+v+` · `+NM[v],it:mk(v)};
+DK.dir.n=`Directivas SSH`;DK.cmd.n=`Comandos SSH`;
+const INFO={
+11:{h:`Lanzada el 14 de agosto de 2021. Su soporte LTS terminó el 31 de agosto de 2026: Debian ya no publica actualizaciones de seguridad para esta versión (solo un subconjunto de paquetes tiene soporte externo, Extended LTS). Lo recomendable es migrar a Debian 12 y después a 13.`,s:[[`Software principal`,`Kernel Linux 5.10, OpenSSH 8.4p1, GCC 10.2, MariaDB 10.5 y GIMP 2.10.22. Incluyó más de 11.000 paquetes nuevos, hasta superar los 59.000 en total.`],[`Novedades de su época`,`Fue la primera con un kernel que incluye soporte exFAT, activó por defecto el journal persistente de systemd (los registros sobreviven al reinicio y se leen con journalctl) y añadió un comando genérico open.`],[`Repositorios y seguridad`,`El suite de seguridad pasó a llamarse bullseye-security. Todavía no existe el componente non-free-firmware, que llegó con Debian 12.`],[`Cómo migrar`,`Ruta 11 → 12 → 13, sin saltarse versiones. Respalda /etc, /var/lib/dpkg y la salida de dpkg --get-selections '*'; cambia las fuentes a bookworm, añade non-free-firmware si usas firmware no libre y ejecuta apt update, apt upgrade --without-new-pkgs y apt full-upgrade.`]]},
+12:{h:`Lanzada el 10 de junio de 2023. El soporte regular terminó el 12 de julio de 2026 y ahora está en LTS hasta el 30 de junio de 2028, para amd64, i386, arm64, armhf y ppc64el.`,s:[[`Software principal`,`Kernel 6.1, OpenSSH 9.2p1, GCC 12.2, systemd 252, Python 3.11, Bash 5.2.15, APT 2.6, dpkg 1.21.22 y PHP 8.2.`],[`Firmware no libre`,`Se creó el componente non-free-firmware para separar el firmware de los demás paquetes non-free. Al subir desde 11 conviene añadirlo a las fuentes APT si usas firmware no libre; las ISO y el instalador pueden incluirlo.`],[`Registros`,`rsyslog crea menos archivos de log y usa marcas de tiempo de alta precisión; para consultar servicios se recomienda journalctl.`],[`Cómo migrar a 13`,`Solo se admite subir desde 12 con el último punto de versión. Si actualizas por SSH, primero sube OpenSSH a 1:9.2p1-2+deb12u7 o superior y trabaja dentro de tmux o screen. Debian 13 pide revisar /boot (mínimo 768 MB con unos 300 MB libres), pasar las fuentes al formato deb822 y reiniciar al final por el cambio de kernel.`]]},
+13:{h:`Es la versión estable actual. Sus notas de publicación oficiales son la base de este apartado, incluidas las tarjetas de directivas y comandos SSH.`,s:[[`Software principal`,`Kernel 6.12, OpenSSH 10.0p1, GCC 14.2, systemd 257, Python 3.13, Bash 5.2.37, curl 8.14.1, PostgreSQL 17, GNOME 48 y KDE Plasma 6.3. Más de 14.000 paquetes nuevos, con un total superior a 69.000.`],[`Arquitecturas`,`Soporte oficial de riscv64 por primera vez. i386 queda solo para ejecutar software antiguo, sin kernel ni instalador; armel es su última versión; mipsel y mips64el se eliminan. Todas las arquitecturas excepto i386 usan time_t de 64 bits.`],[`Cambios del día a día`,`/tmp es un tmpfs en memoria (hasta el 50 % de la RAM como máximo). last, lastb y lastlog se reemplazan por wtmpdb, lastlog2 y lslogins. systemd-sysctl ya no lee /etc/sysctl.conf: usa /etc/sysctl.d/*.conf. ping ya no corre con privilegios elevados. En instalaciones nuevas, /tmp y /var/tmp se limpian periódicamente.`],[`APT y OpenSSH`,`APT migra al formato deb822 (.sources) y trae apt modernize-sources; se recomienda usar .pgp en Signed-By. OpenSSH ya no admite claves DSA ni con opciones de configuración, openssh-server no lee ~/.pam_environment y la autenticación GSSAPI saldrá del paquete principal en forky.`]]}};
+const FACT=[[`Trae el kernel Linux 5.10`,11],[`Trae el kernel Linux 6.1`,12],[`Trae el kernel Linux 6.12`,13],[`Incluye OpenSSH 8.4p1`,11],[`Incluye OpenSSH 9.2p1`,12],[`Incluye OpenSSH 10.0p1`,13],[`Creó el componente non-free-firmware`,12],[`Fue la primera con un kernel con soporte exFAT`,11],[`Activó por defecto el journal persistente de systemd`,11],[`Renombró el suite de seguridad a bullseye-security`,11],[`Monta /tmp como tmpfs en memoria por defecto`,13],[`Reemplazó los comandos last, lastb y lastlog`,13],[`Es la primera con soporte oficial de riscv64`,13],[`Su LTS terminó el 31 de agosto de 2026 y ya no recibe actualizaciones de Debian`,11],[`Está en LTS hasta el 30 de junio de 2028`,12],[`systemd-sysctl dejó de leer /etc/sysctl.conf`,13],[`OpenSSH dejó de admitir claves DSA incluso con opciones de configuración`,13],[`Su nombre en clave es Bookworm`,12],[`Su nombre en clave es Trixie`,13],[`Su nombre en clave es Bullseye`,11],[`Recomienda el formato deb822 (.sources) para las fuentes de APT`,13],[`Trae GCC 10.2`,11],[`Trae GCC 12.2 y Python 3.11`,12],[`Trae GCC 14.2 y Python 3.13`,13],[`Trae systemd 252`,12],[`Trae systemd 257`,13],[`ping dejó de ejecutarse con privilegios elevados (CAP_NET_RAW)`,13]];
+const vInfo=()=>{const I=INFO[S.v];return`<div class='card g' style='cursor:default;min-height:0'><div class='k'>Debian ${S.v}</div><div class='big'>${NM[S.v]}</div><p>${I.h}</p></div>`+I.s.map(([t,x])=>`<details class='g'><summary>${t}</summary><p>${x}</p></details>`).join(``)};
+function vGq(){return GT()+(S.gk=='sudo'?vGs():vGq0())}
+function vGq0(){if(!S.G)S.G={a:Math.random()*FACT.length|0,s:null};const G=S.G,a=FACT[G.a][1];return`<div class='q g'><div class='sc'><span>Aciertos ${S.gs|0} de ${S.gt|0}</span></div><div class='k'>¿A qué versión de Debian corresponde esto?</div><p>${FACT[G.a][0]}</p>${[11,12,13].map(n=>`<button class='b opt ${G.s!=null?(n==a?'ok':n==G.s?'no':''):''}' data-a='ga' data-v='${n}' ${G.s!=null?'disabled':''}>Debian ${n} · ${NM[n]}</button>`).join(``)}${G.s!=null?`<button class='b on' data-a='gn'>Siguiente pregunta</button>`:``}</div>`}
+const A=document.getElementById("app");
+let S={v:13,m:"card",d:"g13",i:0,f:false,only:false,ord:null,k:{dir:[],cmd:[],g11:[],g12:[],g13:[]},q:"",Q:null,sc:0,tt:0,st:0,pop:false};
+const cl=(a,n)=>Array.isArray(a)?[...new Set(a.filter(i=>Number.isInteger(i)&&i>=0&&i<n))]:[];
+try{const r=JSON.parse(localStorage.getItem("sshk")||"null");if(r)for(const x in DK)S.k[x]=cl(r[x],DK[x].it.length)}catch(e){}
+const sv=()=>{try{localStorage.setItem("sshk",JSON.stringify(S.k))}catch(e){S.ns=1}};
+const its=()=>DK[S.d].it,kn=()=>S.k[S.d];
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const lst=()=>(S.ord||its().map((_,i)=>i)).filter(i=>!S.only||!kn().includes(i));
+const lab=i=>S.d=="dir"?its()[i].t.split(" ")[0]:its()[i].t;
+function nq(){const n=its().length,a=Math.random()*n|0,o=new Set([a]);while(o.size<4)o.add(Math.random()*n|0);S.Q={a,o:shuf([...o]),s:null}}
+function back(x){return (x.v?`<div class="k">Función</div><p>${x.f}</p><div class="k">En el laboratorio</div><p>${x.c}</p><div class="k">Cómo verificarlo</div><code>${x.v}</code>`:`<div class="k">Qué demuestra</div><p>${x.f}</p>`)+(x.n?`<div class='nt'>${x.n}</div>`:'')}
+function vCard(){const l=lst();if(!l.length)return`<div class="card g"><div class="big">¡Todo dominado!</div><p class="hint">Marcaste las ${its().length} tarjetas como sabidas.</p><div class="row"><button class="b ${S.rc?'no':''}" data-a="rs">${S.rc?'¿Seguro? Se borra todo':'Reiniciar todo'}</button></div></div>`;
+S.i=((S.i%l.length)+l.length)%l.length;const x=its()[l[S.i]];
+return`<div class="card g ${S.pop?"pop":""}" tabindex="0" role="button" data-a="flip" aria-label="Voltear tarjeta">${S.f?back(x):`<div class="k">${S.d=="dir"?"Directiva":"Comando"} ${S.i+1} de ${l.length}</div><div class="big">${x.t}</div><div class="hint">Recuerda su función y toca para comprobar. Teclado: ← → espacio K R.</div>`}</div>
+<div class="row"><button class="b no" data-a="rev">Repasar</button><button class="b ok" data-a="know">Lo sé</button></div>
+<div class="row"><button class="b" data-a="prev" aria-label="Anterior">‹</button><button class="b" data-a="shuf">Mezclar</button><button class="b ${S.only?"on":""}" data-a="only" aria-pressed="${S.only}">Solo pendientes</button><button class="b" data-a="next" aria-label="Siguiente">›</button></div>`}
+function vQuiz(){if(!S.Q)nq();const Q=S.Q,x=its()[Q.a],d=S.d=="dir";
+return`<div class="q g"><div class="sc"><span>Aciertos ${S.sc} de ${S.tt}</span><span>Racha ${S.st}</span></div><div class="k">${d?"¿Qué directiva cumple esta función?":"¿Qué comando demuestra esto?"}</div><p>${x.f}</p>
+${Q.o.map(i=>`<button class="b opt ${Q.s!=null?(i==Q.a?"ok":i==Q.s?"no":""):""}" data-a="ans" data-v="${i}" ${Q.s!=null?"disabled":""}>${lab(i)}</button>`).join("")}
+${Q.s!=null?`${d?`<div class="k">En el laboratorio</div><p>${x.c}</p><code>${x.v}</code>`:(x.n?`<div class='nt'>${x.n}</div>`:"")}<button class="b on" data-a="nq">Siguiente pregunta</button>`:""}</div>`}
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function tl(){const q=S.q.trim().toLowerCase(),r=its().filter(x=>!q||(x.t+x.f+(x.c||"")).toLowerCase().includes(q));return r.length?r.map(x=>`<details class="g"><summary>${x.t}</summary>${back(x)}</details>`).join(""):`<p class="hint">Sin resultados para “${esc(S.q.trim())}”. Prueba con otra palabra.</p>`}
+const TB=[['info','Información'],['apt','APT'],['sudo','sudo'],['exam','Examen'],['card','Tarjetas'],['quiz','Quiz'],['tab','Comandos'],['gq','Quiz general'],['learn','Aprender'],['cred','Créditos']];
+const L=[
+[`Fundamentos`,`Todo es un archivo`,`En Linux, dispositivos, procesos y sockets se exponen como archivos. /etc guarda la configuración, /var/log los registros, /home los datos de usuarios y /proc el estado del kernel.`,`ls /etc /var/log /proc | head`],
+[`Fundamentos`,`Manuales y ayuda`,`man abre el manual de un comando; el número es la sección (5 = archivos de configuración, 8 = administración). --help da un resumen rápido.`,`man 5 sshd_config`],
+[`Fundamentos`,`Tuberías y redirección`,`| envía la salida de un comando al siguiente; > sobrescribe un archivo y >> añade al final. grep filtra líneas, wc cuenta y tail -f sigue un archivo en vivo.`,`sudo sshd -T | wc -l`],
+[`Usuarios y permisos`,`Permisos rwx`,`Cada archivo tiene permisos para propietario, grupo y otros: r=4, w=2, x=1. 700 en ~/.ssh y 600 en authorized_keys deja el acceso solo al propietario. chmod cambia permisos y chown el propietario.`,`chmod 700 ~/.ssh; ls -ld ~/.ssh`],
+[`Usuarios y permisos`,`Usuarios, grupos y sudo`,`/etc/passwd lista las cuentas y /etc/group los grupos. sudo ejecuta comandos con privilegios según /etc/sudoers, que se edita con visudo. id muestra tu UID y tus grupos.`,`id; groups`],
+[`Sistema`,`systemd y servicios`,`systemd arranca y supervisa los servicios. systemctl los gestiona (start, stop, restart, reload, enable, disable, status). enabled significa que arranca con el sistema; active, que corre ahora.`,`systemctl is-enabled ssh; systemctl is-active ssh`],
+[`Sistema`,`journalctl y registros`,`journald guarda los registros de systemd. Filtra por unidad (-u), tiempo (--since) o prioridad (-p). Un /var/log/auth.log clásico solo existe si rsyslog está instalado.`,`sudo journalctl -u ssh --since '1 hour ago'`],
+[`Sistema`,`Paquetes con apt`,`apt instala, actualiza y elimina paquetes de los repositorios de Debian. Mantener el sistema al día es una de las defensas más importantes, también para openssh-server.`,`sudo apt update && sudo apt upgrade`],
+[`Red`,`Direcciones, rutas y sockets`,`ip a y ip route muestran direcciones y rutas; ss lista sockets. Una IP con /24 usa la máscara 255.255.255.0: 256 direcciones en la subred.`,`ip -br a; ss -tuln`],
+[`Red`,`Firewall: ufw y nftables`,`nftables es el marco de filtrado de Debian; ufw es una capa sencilla encima. Política típica: denegar la entrada por defecto y permitir solo lo necesario, como 22/tcp.`,`sudo ufw status verbose`],
+[`SSH avanzado`,`Bloques Match`,`Match en sshd_config aplica directivas solo a ciertos usuarios, grupos o direcciones, por ejemplo permitir contraseña solo desde la LAN. sshd -T -C muestra los valores efectivos para un contexto.`,`sudo sshd -T -C user=adpc,host=debian,addr=192.168.0.10`],
+[`SSH avanzado`,`Archivo ~/.ssh/config`,`En el cliente define alias con Host, HostName, User, Port e IdentityFile, para escribir solo ssh debian. Es configuración del cliente, no de sshd.`,`Host debian\n  HostName 192.168.0.58\n  User adpc`],
+[`SSH avanzado`,`ssh-agent y huellas`,`ssh-agent mantiene tu clave privada descifrada en memoria para no escribir la frase cada vez. ssh-keygen -lf muestra la huella de una clave y ssh-keyscan obtiene las claves de host de un servidor.`,`ssh-keygen -lf ~/.ssh/id_ed25519.pub`],
+[`SSH avanzado`,`Túneles y reenvío de puertos`,`-L reenvía un puerto local hacia un destino a través del servidor; -R hace lo inverso; -D abre un proxy SOCKS. Dependen de AllowTcpForwarding en sshd. -J (ProxyJump) salta por un host intermedio.`,`ssh -L 8080:localhost:80 adpc@192.168.0.58`],
+[`Herramientas`,`scp, rsync y tmux`,`scp copia archivos por SSH; rsync sincroniza y transfiere solo las diferencias; tmux mantiene tus comandos corriendo aunque se corte la conexión y puedes volver con tmux attach.`,`rsync -avz carpeta/ adpc@192.168.0.58:~/respaldo/`],
+[`Herramientas`,`fail2ban`,`Lee los registros y bloquea temporalmente las IP con muchos intentos fallidos. Se combina con claves públicas, AllowUsers, firewall y actualizaciones: ninguna medida basta por sí sola.`,`sudo apt install fail2ban`]];
+const AP=[
+[`Fundamentos`,`apt, apt-get y dpkg`,`apt es la interfaz moderna para uso interactivo. apt-get y apt-cache son las clásicas, con salida estable para scripts. dpkg es la herramienta de bajo nivel: instala cada .deb pero no resuelve dependencias.`,`apt --version; dpkg -S /usr/sbin/sshd`],
+[`Fundamentos`,`Dónde guarda las cosas`,`/etc/apt: configuración y fuentes. /var/lib/apt/lists: índices descargados. /var/cache/apt/archives: .deb descargados. /var/log/apt: historial. /var/log/dpkg.log: acciones de dpkg.`,`ls /etc/apt /var/log/apt`],
+[`Instalar y actualizar`,`update, upgrade y full-upgrade`,`update solo descarga los índices. upgrade instala versiones nuevas de lo ya instalado, puede traer dependencias nuevas y nunca elimina paquetes. full-upgrade también puede eliminar para resolver conflictos (equivale a apt-get dist-upgrade).`,`sudo apt update && sudo apt full-upgrade`],
+[`Instalar y actualizar`,`apt install y sus opciones`,`Instala también los paquetes recomendados. -s simula sin cambiar nada; ./archivo.deb instala uno local; paquete=versión fija la versión; --no-install-recommends omite recomendados; -t elige una suite concreta; reinstall repite la instalación.`,`sudo apt install -s nginx\nsudo apt install --no-install-recommends nginx`],
+[`Instalar y actualizar`,`download y satisfy`,`download baja el .deb a la carpeta actual sin instalarlo. satisfy instala lo necesario para cumplir una expresión de dependencias.`,`apt download curl\nsudo apt satisfy 'curl (>= 7.0)'`],
+[`Eliminar y limpiar`,`remove, purge y autoremove`,`remove deja los archivos de configuración; purge también los borra de /etc (no los datos de /home). autoremove quita dependencias automáticas que ya nadie necesita; con --purge borra también su configuración.`,`sudo apt purge nginx && sudo apt autoremove --purge`],
+[`Eliminar y limpiar`,`clean y autoclean`,`clean vacía /var/cache/apt/archives. autoclean borra solo los .deb que ya no se pueden descargar. Liberan disco, no afectan a lo instalado.`,`sudo apt clean`],
+[`Buscar e inspeccionar`,`search, show y list`,`search busca en nombres y descripciones (--names-only solo en nombres). show muestra versión, dependencias y tamaño. list admite --installed, --upgradable y --all-versions.`,`apt search --names-only ^openssh\napt show openssh-server\napt list --upgradable`],
+[`Buscar e inspeccionar`,`policy, depends y rdepends`,`policy muestra versión instalada, candidata y la prioridad de cada repositorio. depends indica de qué depende un paquete y rdepends quién depende de él. apt-cache madison lista todas las versiones disponibles.`,`apt policy openssh-server\napt rdepends openssh-client`],
+[`Buscar e inspeccionar`,`changelog y apt-file`,`changelog muestra el registro de cambios de un paquete. apt-file es un paquete aparte que busca qué paquete contiene un archivo, aunque no esté instalado.`,`apt changelog openssh-server\nsudo apt install apt-file && sudo apt-file update && apt-file search sshd_config`],
+[`Retener y fijar versiones`,`apt-mark`,`hold impide que un paquete se actualice; unhold lo libera; showhold lista los retenidos. manual y auto cambian cómo se marca un paquete: autoremove solo quita los marcados como automáticos.`,`sudo apt-mark hold linux-image-amd64\napt-mark showhold`],
+[`Retener y fijar versiones`,`Pinning (preferences)`,`En /etc/apt/preferences.d/ se asigna Pin-Priority por paquete o repositorio. Mayor a 1000 permite bajar de versión; 500 es lo normal; 100 es la versión ya instalada; negativo bloquea el paquete.`,`Package: openssh-server\nPin: release a=bookworm-backports\nPin-Priority: 600`],
+[`Repositorios y fuentes`,`Formato clásico sources.list`,`Cada línea es deb URI suite componentes (deb-src para código fuente). Los componentes son main, contrib, non-free y, desde Debian 12, non-free-firmware. Usa el nombre en clave (bookworm) en vez de stable para no saltar de versión por sorpresa.`,`deb http://deb.debian.org/debian bookworm main non-free-firmware`],
+[`Repositorios y fuentes`,`Formato deb822 (.sources)`,`Bloques con campos Types, URIs, Suites, Components y Signed-By, en /etc/apt/sources.list.d/. Es el formato recomendado en Debian 13; APT ya lo leía antes.`,`Types: deb\nURIs: https://deb.debian.org/debian\nSuites: trixie trixie-updates\nComponents: main\nSigned-By: /usr/share/keyrings/debian-archive-keyring.pgp`],
+[`Repositorios y fuentes`,`Suites y backports`,`Además de la suite principal existen codename-updates, codename-security (desde Debian 11) y codename-backports. Los backports no se instalan solos: se piden con -t.`,`sudo apt install -t bookworm-backports paquete`],
+[`Repositorios y fuentes`,`edit-sources y modernize-sources`,`edit-sources abre las fuentes en tu editor y hace comprobaciones básicas. modernize-sources convierte las fuentes al formato deb822 y guarda copia .bak; llegó con APT 3.0 y no existe en Debian 12.`,`sudo apt edit-sources\nsudo apt modernize-sources`],
+[`Seguridad`,`Firmas y claves`,`APT verifica la firma de cada repositorio (InRelease). apt-key está obsoleto: guarda las claves de terceros en /etc/apt/keyrings y enlázalas con Signed-By en la fuente.`,`ls /usr/share/keyrings | head`],
+[`Seguridad`,`Actualizaciones automáticas`,`unattended-upgrades instala las actualizaciones de seguridad solo. Los temporizadores apt-daily y apt-daily-upgrade programan la descarga y la instalación.`,`sudo apt install unattended-upgrades\nsystemctl list-timers 'apt-daily*'`],
+[`Registros y configuración`,`Historial y configuración`,`history.log guarda fecha, comando y paquetes de cada operación; term.log, la salida completa. apt-config dump muestra la configuración efectiva; los ajustes propios van en /etc/apt/apt.conf.d/.`,`grep -E 'Start-Date|Commandline' /var/log/apt/history.log | tail\napt-config dump | grep -i recommends`],
+[`Problemas`,`Lock, paquetes rotos y retenidos`,`Could not get lock: otro apt o dpkg está corriendo (a veces apt-daily); espera, no borres el lock. Paquetes a medias: --fix-broken y dpkg --configure -a. Si upgrade deja paquetes retenidos (kept back), full-upgrade suele resolverlo.`,`ps aux | grep -E '[a]pt|[d]pkg'\nsudo apt --fix-broken install\nsudo dpkg --configure -a`],
+[`Problemas`,`Errores 404 o sin Release`,`Suelen indicar una suite mal escrita o una versión que ya no tiene repositorio principal. Revisa las fuentes con sudo apt edit-sources y vuelve a ejecutar apt update.`,`sudo apt update`],
+[`Cambiar de versión`,`Ruta de actualización`,`Sube de una estable a la siguiente sin saltarte ninguna: 11 → 12 → 13. Respalda, cambia la suite en las fuentes, y ejecuta estos tres pasos; después reinicia.`,`sudo apt update\nsudo apt upgrade --without-new-pkgs\nsudo apt full-upgrade`],
+[`Por versión`,`Debian 11 Bullseye · APT 2.2.x`,`Componentes main, contrib y non-free. Seguridad en bullseye-security. Fuentes en formato clásico; deb822 es posible pero poco usado.`],
+[`Por versión`,`Debian 12 Bookworm · APT 2.6.x`,`Aparece el componente non-free-firmware. Seguridad en bookworm-security. No incluye apt modernize-sources.`],
+[`Por versión`,`Debian 13 Trixie · APT 3.0.x`,`Trae apt modernize-sources y recomienda deb822. Incluye el nuevo resolvedor de dependencias solver3 (se activa a mano con --solver 3.0), mejor diagnóstico de conflictos y salida más legible.`],
+[`Por versión`,`Novedades de APT 3.2 (aún no en 11-13)`,`apt why y why-not explican por qué un paquete está instalado o no. history-list, history-info, history-undo, history-redo y history-rollback revisan y revierten operaciones. solver3 pasa a ser el predeterminado. Está previsto para Debian 14.`,`apt why vim-common\napt history-list`],
+[`Equivalencias`,`apt-get y apt-cache → apt`,`Los comandos clásicos tienen su equivalente en apt; para scripts conviene seguir con apt-get.`,`apt-get dist-upgrade  =  apt full-upgrade\napt-cache search  =  apt search\napt-cache show  =  apt show\napt-cache policy  =  apt policy`]];
+const al=()=>{const q=S.q.trim().toLowerCase();let c='';const r=AP.filter(([g,t,x,v])=>!q||(g+t+x+(v||'')).toLowerCase().includes(q));return r.length?r.map(([g,t,x,v])=>(g!=c?(c=g,`<h2 class='gh'>${g}</h2>`):'')+`<details class='g'><summary>${t}</summary><p>${x}</p>${v?`<code>${esc(v)}</code>`:''}</details>`).join(''):`<p class='hint'>Sin resultados para “${esc(S.q.trim())}”. Prueba con otra palabra.</p>`};
+const vApt=()=>`<div class='card g' style='cursor:default;min-height:0'><div class='k'>Gestor de paquetes</div><div class='big'>APT</div><p>Descarga, instala y elimina paquetes .deb resolviendo dependencias. Comandos, repositorios, seguridad y diferencias entre Debian 11, 12 y 13.</p><div class='nt'><b>11 Bullseye</b> · APT 2.2.x<br><b>12 Bookworm</b> · APT 2.6.x<br><b>13 Trixie</b> · APT 3.0.x</div></div><input id='sq' type='search' placeholder='Buscar en APT' value='${S.q.replace(/'/g,'&#39;')}' aria-label='Buscar en APT' autocomplete='off' spellcheck='false'><div id='tl' style='display:grid;gap:10px'>${al()}</div>`;
+const ll=()=>{const q=S.q.trim().toLowerCase();let c='';const r=L.filter(([g,t,x,v])=>!q||(g+t+x+v).toLowerCase().includes(q));return r.length?r.map(([g,t,x,v])=>(g!=c?(c=g,`<h2 class='gh'>${g}</h2>`):'')+`<details class='g'><summary>${t}</summary><p>${x}</p><code>${v}</code></details>`).join(''):`<p class='hint'>Sin resultados para “${esc(S.q.trim())}”. Prueba con otra palabra.</p>`};
+const vLearn=()=>`<p class='hint'>Complementos nuevos que no están en el documento. Toca un tema para abrirlo.</p><input id='sq' type='search' placeholder='Buscar un tema o comando' value='${S.q.replace(/'/g,'&#39;')}' aria-label='Buscar tema' autocomplete='off' spellcheck='false'><div id='tl' style='display:grid;gap:10px'>${ll()}</div>`;
+const vCred=()=>`<div class='card g' style='cursor:default'><div class='k'>Desarrollado por</div><div class='big'>Claude IA y David Pizo</div><p>App de estudio para repasar y memorizar OpenSSH en Debian 13 Trixie, creada a partir de la Guía Completa OpenSSH.</p><p class='hint'>Fuentes: notas de publicación oficiales de Debian 13, anuncios de lanzamiento de Debian 11 y 12 y comunicados del equipo Debian LTS (debian.org); man sshd_config y man ssh.</p></div><div class='q g'><div class='k'>Respaldo del progreso</div><p>Genera un código para llevar tu avance a otro dispositivo y pégalo allí para importarlo.</p><textarea id='bk' aria-label='Código de progreso' placeholder='Pega aquí tu código'></textarea><div class='row'><button class='b' data-a='exp'>Generar código</button><button class='b on' data-a='imp'>Importar</button></div><div class='bm' id='bm' role='status'></div></div>`;
+const RB=()=>`<button class='rs ${S.rc?'cf':''}' data-a='rs'>${S.rc?'¿Seguro? Se borra todo':'Reiniciar todo'}</button>`;
+function pg(){if(['learn','cred','info','gq','apt','sudo','exam'].includes(S.m))return`<div class='pr' style='justify-content:flex-end'>${RB()}</div>`;const n=its().length,k=kn().length;return`<div class='pr'><div class='bar'><i style='width:${k/n*100}%'></i></div><span>${k} de ${n} dominadas</span>${RB()}</div>${S.ns?`<p class='hint'>Tu navegador no permite guardar el progreso. Usa el respaldo en Créditos.</p>`:''}`}
+function vw(){return S.m=='info'?vInfo():S.m=='apt'?vApt():S.m=='sudo'?vSudo():S.m=='exam'?vEx():S.m=='gq'?vGq():S.m=='card'?vCard():S.m=='quiz'?vQuiz():S.m=='learn'?vLearn():S.m=='cred'?vCred():`<input id='sq' type='search' placeholder='Buscar directiva, comando o concepto' value='${S.q.replace(/'/g,'&#39;')}' aria-label='Buscar' autocomplete='off' spellcheck='false'><div id='tl' style='display:grid;gap:10px'>${tl()}</div>`}
+function rv(){document.getElementById('pg').innerHTML=pg();document.getElementById('v').innerHTML=vw();S.pop=false}
+const PL={};function pl(anim){if(!A.querySelectorAll)return;A.querySelectorAll('.seg').forEach(s=>{const b=s.querySelector('.on'),p=s.querySelector('.pill'),k=s.dataset.k;if(!b||!p)return;const x=b.offsetLeft,w=b.offsetWidth,o=anim&&PL[k]||{x,w};PL[k]={x,w};p.style.transition='none';p.style.width=o.w+'px';p.style.transform='translateX('+o.x+'px)';void p.offsetWidth;p.style.transition='';p.style.width=w+'px';p.style.transform='translateX('+x+'px)'})}
+window.addEventListener('resize',()=>pl(false));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>pl(false));
+function r(){const nv=['learn','cred','gq','apt','sudo','exam'].includes(S.m),nd=nv||S.m=='info'||VD[S.v].length<2,seg=(a,o,c)=>`<div class='seg g' data-k='${a}'><i class='pill'></i>${o.map(([v,l])=>`<button class='${c==v?'on':''}' aria-pressed='${c==v}' data-a='${a}' data-v='${v}'>${l}</button>`).join('')}</div>`;
+A.innerHTML=`<div class='col'>${nv?'':seg('v',[[11,'11 Bullseye'],[12,'12 Bookworm'],[13,'13 Trixie']],S.v)}${seg('m',TB,S.m)}${nd?'':seg('d',VD[S.v].map(k=>[k,DK[k].n]),S.d)}<div id='pg'>${pg()}</div><div id='v' class='col' aria-live='${S.m=='card'||S.m=='quiz'?'polite':'off'}'>${vw()}</div></div>`;S.pop=false;pl(true)}
+const SU=[
+[`Fundamentos`,`Qué es sudo`,`Utilidad para delegar privilegios administrativos a usuarios autorizados sin compartir la contraseña de root. Promueve el mínimo privilegio y deja trazabilidad de cada acción.`,`sudo --version`],
+[`Fundamentos`,`Cómo funciona`,`El binario /usr/bin/sudo tiene el bit SUID, así que corre con UID 0. Consulta las políticas en /etc/sudoers y /etc/sudoers.d/, pide tu propia contraseña (no la de root) y, si la regla coincide, ejecuta el comando como el usuario de destino (root por defecto) registrando el evento.`],
+[`Fundamentos`,`Caché y TTY`,`Tras autenticarte, sudo no vuelve a pedir contraseña durante 15 minutos (timestamp_timeout = 15). El token se asocia al terminal (tty/pts) desde el que se invocó.`],
+[`Comandos`,`Opciones clave`,`sudo comando: ejecuta como root. -i: shell interactivo tipo login de root. -u usuario comando: ejecuta como otro usuario. -l: lista tus permisos. -v: renueva la marca de tiempo. -k: invalida el token al instante.`,`sudo -l\nsudo -u www-data whoami\nsudo -k`],
+[`Configuración`,`Edita siempre con visudo`,`Nunca abras /etc/sudoers con nano o vim directamente. visudo bloquea el archivo y valida la sintaxis antes de guardar, para que un error no te deje sin acceso.`,`sudo visudo`],
+[`Configuración`,`Estructura de una regla`,`Usuario/Grupo Hosts=(Usuarios:Grupos) Comandos. Los grupos llevan prefijo %. ALL en hosts significa cualquier origen. El usuario objetivo es root por defecto. Los comandos se escriben con ruta absoluta.`,`%sudo ALL=(ALL:ALL) ALL`],
+[`Configuración`,`Ejemplos frecuentes`,`NOPASSWD permite un comando concreto sin contraseña. Los alias (User_Alias, Cmnd_Alias) agrupan usuarios y comandos para mantener el orden.`,`operador ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart nginx\nUser_Alias REDES = ana, carlos, maria\nCmnd_Alias COMANDOS_NET = /usr/sbin/ip, /usr/sbin/ethtool, /usr/bin/tcpdump\nREDES ALL=(ALL) COMANDOS_NET`],
+[`Auditoría`,`Dónde están los logs`,`Debian y Ubuntu: /var/log/auth.log. RHEL, Fedora y CentOS: /var/log/secure. Con systemd se consulta con journalctl.`,`journalctl _COMM=sudo`],
+[`Auditoría`,`env_reset`,`Por defecto sudo limpia las variables de entorno del usuario para evitar inyección de librerías o cambios de ruta de binarios (PATH, LD_PRELOAD).`],
+[`Alternativas`,`sudo, doas y sudo-rs`,`sudo: estándar de la industria, muy configurable, con alias y auditoría avanzada. doas (OpenBSD): muy liviano y minimalista, con menor superficie de ataque. sudo-rs: reescritura en Rust, enfocada en seguridad de memoria.`],
+[`Recomendaciones`,`Buenas prácticas`,`Evita usar su directo y restringe la cuenta root en producción. Usa NOPASSWD solo donde sea imprescindible (scripts o monitoreo restringido). Revisa los logs con frecuencia o envíalos a un SIEM.`]];
+const SQ=[
+[`¿Qué contraseña pide sudo?`,[`La de root`,`La del propio usuario`,`Ninguna`],1],
+[`¿Qué bit permite que sudo se ejecute con UID 0?`,[`SGID`,`Sticky`,`SUID`],2],
+[`¿Cuánto dura por defecto la caché de autenticación?`,[`5 minutos`,`15 minutos`,`1 hora`],1],
+[`¿Qué herramienta debes usar para editar /etc/sudoers?`,[`visudo`,`nano directo`,`cat`],0],
+[`¿Qué hace sudo -k?`,[`Lista permisos`,`Renueva el token`,`Invalida el token`],2],
+[`¿Qué hace sudo -l?`,[`Lista los permisos del usuario`,`Cierra sesión`,`Abre shell de root`],0],
+[`¿Qué opción ejecuta un comando como otro usuario?`,[`-u`,`-i`,`-v`],0],
+[`En una regla de sudoers, ¿cómo se indica un grupo?`,[`Con @`,`Con %`,`Con #`],1],
+[`¿En qué log se registra sudo en Debian y Ubuntu?`,[`/var/log/secure`,`/var/log/auth.log`,`/var/log/dpkg.log`],1],
+[`¿Para qué sirve env_reset?`,[`Reiniciar el equipo`,`Limpiar variables de entorno del usuario`,`Borrar los logs`],1],
+[`¿Qué alternativa a sudo es minimalista y viene de OpenBSD?`,[`doas`,`sudo-rs`,`su`],0],
+[`¿Qué es sudo-rs?`,[`Un editor de sudoers`,`Una reescritura de sudo en Rust`,`Un log de sudo`],1]];
+const gl=A=>{const q=S.q.trim().toLowerCase();let c='';const r=A.filter(([g,t,x,v])=>!q||(g+t+x+(v||'')).toLowerCase().includes(q));return r.length?r.map(([g,t,x,v])=>(g!=c?(c=g,`<h2 class='gh'>${g}</h2>`):'')+`<details class='g'><summary>${t}</summary><p>${x}</p>${v?`<code>${esc(v)}</code>`:''}</details>`).join(''):`<p class='hint'>Sin resultados para “${esc(S.q.trim())}”.</p>`};
+const sl=()=>gl(SU);
+const vSudo=()=>`<div class='card g' style='cursor:default;min-height:0'><div class='k'>Control de privilegios</div><div class='big'>sudo</div><p>Delegar permisos de administrador con trazabilidad: funcionamiento, comandos, sudoers, auditoría y alternativas.</p></div><input id='sq' type='search' placeholder='Buscar en sudo' value='${S.q.replace(/'/g,'&#39;')}' aria-label='Buscar en sudo' autocomplete='off' spellcheck='false'><div id='tl' style='display:grid;gap:10px'>${sl()}</div>`;
+const GT=()=>`<div class='row'><button class='b ${S.gk!='sudo'?'on':''}' data-a='gk' data-v='deb'>Versiones Debian</button><button class='b ${S.gk=='sudo'?'on':''}' data-a='gk' data-v='sudo'>Tema sudo</button></div>`;
+function vGs(){if(!S.G||!S.G.t)S.G={a:Math.random()*SQ.length|0,s:null,t:1};const G=S.G,q=SQ[G.a];return`<div class='q g'><div class='sc'><span>Aciertos ${S.gs|0} de ${S.gt|0}</span></div><div class='k'>Quiz sobre sudo</div><p>${q[0]}</p>${q[1].map((o,i)=>`<button class='b opt ${G.s!=null?(i==q[2]?'ok':i==G.s?'no':''):''}' data-a='ga' data-v='${i}' ${G.s!=null?'disabled':''}>${o}</button>`).join('')}${G.s!=null?`<button class='b on' data-a='gn'>Siguiente pregunta</button>`:''}</div>`}
+AP.push(
+[`dpkg a fondo`,`Consultar paquetes`,`-l lista paquetes; -s muestra el estado de uno; -L sus archivos; -S a qué paquete pertenece un archivo; --get-selections lista lo instalado; --print-architecture muestra la arquitectura.`,`dpkg -l | head\ndpkg -s openssh-server\ndpkg -L openssh-server\ndpkg -S /usr/bin/ssh\ndpkg --print-architecture`],
+[`dpkg a fondo`,`Instalar y reparar con dpkg`,`-i instala un .deb sin resolver dependencias (luego apt --fix-broken install). -r quita, -P purga. --configure -a termina configuraciones pendientes. dpkg-reconfigure vuelve a lanzar las preguntas de un paquete.`,`sudo dpkg -i paquete.deb\nsudo apt --fix-broken install\nsudo dpkg -P paquete\nsudo dpkg-reconfigure tzdata`],
+[`dpkg a fondo`,`Multiarquitectura`,`Permite instalar paquetes de otra arquitectura (por ejemplo i386). Tras añadirla hay que actualizar los índices. La instalación se indica con paquete:arquitectura.`,`sudo dpkg --add-architecture i386\nsudo apt update\ndpkg --print-foreign-architectures`],
+[`Más comandos apt`,`Opciones globales`,`-y responde sí a todo; -f o --fix-broken repara; -q reduce la salida; -d solo descarga; --allow-downgrades permite bajar versión; --purge con remove equivale a purge; -o Opción=valor cambia un ajuste puntual.`,`sudo apt install -y -d nginx\nsudo apt -o Acquire::Retries=3 update`],
+[`Más comandos apt`,`Patrones de búsqueda`,`Desde APT 2.0 se pueden usar patrones con list, remove, purge y más: ?installed, ?upgradable, ?obsolete, ?automatic, ?config-files y ?name(regex). Se combinan escribiéndolos juntos.`,`apt list '?obsolete'\napt list '?installed ?automatic'\nsudo apt purge '?config-files'`],
+[`Más comandos apt`,`Bajar de versión`,`Instala una versión concreta (consulta las disponibles con apt policy o apt-cache madison) y añade --allow-downgrades si es anterior a la instalada. Después conviene retenerla con apt-mark hold.`,`apt-cache madison nginx\nsudo apt install --allow-downgrades nginx=1.22.1-9`],
+[`Más comandos apt`,`Código fuente y compilación`,`Requiere líneas deb-src (o Types: deb deb-src). apt source descarga el código; apt build-dep instala lo necesario para compilarlo.`,`apt source nginx\nsudo apt build-dep nginx`],
+[`Más comandos apt`,`apt-get y apt-cache al detalle`,`apt-get check verifica dependencias rotas; install -f repara; dist-upgrade; autoclean; source y build-dep. apt-cache pkgnames lista los nombres; stats da estadísticas de la caché; dumpavail y showpkg muestran datos internos.`,`sudo apt-get check\napt-cache stats\napt-cache pkgnames ssh | head`],
+[`Más comandos apt`,`aptitude y por qué está instalado`,`aptitude es un frontend aparte (apt install aptitude). aptitude why explica qué paquete obliga a instalar otro; aptitude search usa patrones como ~i (instalados).`,`aptitude why libssl3\naptitude search '~i ssh'`],
+[`Avanzado`,`Modo no interactivo`,`Para scripts y automatización: apt-get con -y y la variable DEBIAN_FRONTEND=noninteractive evitan preguntas. Con sudo, la variable va delante del comando.`,`sudo DEBIAN_FRONTEND=noninteractive apt-get install -y nginx`],
+[`Avanzado`,`Proxy y caché`,`Se configura en /etc/apt/apt.conf.d/ con Acquire::http::Proxy. Para varios equipos conviene un caché como apt-cacher-ng.`,`Acquire::http::Proxy "http://proxy.local:3128";`],
+[`Avanzado`,`Kernels y espacio`,`Los kernels antiguos se acumulan. Revisa lo instalado y limpia con autoremove --purge; mantén siempre el kernel actual y uno de respaldo.`,`dpkg -l 'linux-image*' | grep ^ii\nsudo apt autoremove --purge`],
+[`Avanzado`,`Qué comando usar`,`Interactivo: apt. Scripts: apt-get. Información sin cambios: apt-cache. Marcas y retenciones: apt-mark. Archivos de un paquete: dpkg o apt-file. Bajo nivel: dpkg.`]);
+SU.push(
+[`Administración de usuarios`,`Dar y quitar acceso`,`En Debian el grupo es sudo; en RHEL y Fedora, wheel. El cambio se aplica al abrir una sesión nueva. Con deluser se quita del grupo.`,`sudo usermod -aG sudo usuario\ngroups usuario\nsudo deluser usuario sudo`],
+[`Administración de usuarios`,`su frente a sudo`,`su - pide la contraseña de root y abre su sesión; sudo pide la tuya y es auditable por comando. Para bloquear la contraseña de root: passwd -l.`,`su -\nsudo passwd -l root`],
+[`Administración de usuarios`,`sudoedit`,`Edita un archivo con tu editor pero con permisos elevados solo al guardar, lo que evita ejecutar el editor como root. Equivale a sudo -e.`,`sudoedit /etc/hosts`],
+[`Opciones avanzadas`,`Más opciones de sudo`,`-s abre shell con tu entorno; -E conserva variables (si la política lo permite); -H usa el HOME del destino; -n no pregunta contraseña y falla; -S lee la contraseña por stdin; -g grupo; -V muestra versión y configuración.`,`sudo -s\nsudo -n true\nsudo -V | head`],
+[`Opciones avanzadas`,`Defaults importantes`,`env_reset limpia el entorno; secure_path fija el PATH; timestamp_timeout cambia la caché; passwd_tries los intentos; logfile guarda un log propio; use_pty ejecuta en un pseudoterminal.`,`Defaults env_reset\nDefaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"\nDefaults timestamp_timeout=5\nDefaults logfile="/var/log/sudo.log"`],
+[`Opciones avanzadas`,`/etc/sudoers.d y comprobación`,`Cada regla propia va en un archivo de /etc/sudoers.d/ (sin punto ni ~ en el nombre, permisos 0440). visudo -c comprueba la sintaxis de todo.`,`sudo visudo -f /etc/sudoers.d/operadores\nsudo visudo -c\nls -l /etc/sudoers.d`],
+[`Opciones avanzadas`,`Registro de entrada y salida`,`log_input y log_output graban lo escrito y mostrado en la sesión; sudoreplay las reproduce. Útil en auditorías.`,`Defaults log_input, log_output\nsudo sudoreplay -l`],
+[`Opciones avanzadas`,`Riesgos y NOEXEC`,`Editores y paginadores (vi, less) permiten abrir un shell. NOEXEC bloquea que el programa lance otros. Evita comodines y negaciones con !: son fáciles de eludir; autoriza rutas absolutas y argumentos exactos.`,`usuario ALL=(root) NOEXEC: /usr/bin/less`]);
+const AQ=[
+[`¿Qué versión de APT trae Debian 12?`,[`2.2.x`,`2.6.x`,`3.0.x`],1],
+[`¿Qué comando solo descarga los índices de paquetes?`,[`apt update`,`apt upgrade`,`apt clean`],0],
+[`¿Qué diferencia a full-upgrade de upgrade?`,[`Nada`,`Puede eliminar paquetes`,`Solo descarga`],1],
+[`¿Qué conserva remove que purge borra?`,[`Los datos de /home`,`Los archivos de configuración`,`Las dependencias`],1],
+[`¿Qué comando impide que un paquete se actualice?`,[`apt-mark hold`,`apt pin`,`apt lock`],0],
+[`¿Qué comando indica qué paquete contiene un archivo instalado?`,[`dpkg -L`,`dpkg -S`,`dpkg -l`],1],
+[`¿Qué formato de fuentes recomienda Debian 13?`,[`deb822 (.sources)`,`XML`,`JSON`],0],
+[`¿Qué componente aparece en Debian 12 para firmware no libre?`,[`contrib`,`non-free-firmware`,`restricted`],1],
+[`¿Qué comando convierte las fuentes a deb822 en APT 3.0?`,[`apt modernize-sources`,`apt convert`,`apt-key add`],0],
+[`¿Dónde se guardan los .deb descargados?`,[`/var/cache/apt/archives`,`/etc/apt`,`/usr/lib/apt`],0],
+[`¿Qué archivo guarda el historial de operaciones de apt?`,[`/var/log/apt/history.log`,`/var/log/boot.log`,`/etc/apt/history`],0],
+[`¿Qué hace apt install -s paquete?`,[`Instala en silencio`,`Simula sin cambiar nada`,`Instala solo la fuente`],1],
+[`¿Cómo se pide un paquete de backports?`,[`apt install -t bookworm-backports paquete`,`apt backports paquete`,`No se puede`],0],
+[`¿Qué herramienta es obsoleta para gestionar claves de repositorios?`,[`Signed-By`,`apt-key`,`keyrings`],1],
+[`¿Qué comando repara dependencias rotas?`,[`apt --fix-broken install`,`apt break`,`apt clean`],0],
+[`¿Qué hace apt autoremove?`,[`Elimina dependencias que ya no se necesitan`,`Borra todo el caché`,`Actualiza el sistema`],0]];
+const EXB=()=>[...SQ.map(x=>[...x,'sudo']),...AQ.map(x=>[...x,'APT'])];
+function exStart(){const p=EXB();S.ex={q:p.map((_,i)=>i).sort(()=>Math.random()-.5).slice(0,Math.min(20,p.length)),r:[],i:0}}
+function vEx(){const p=EXB(),E=S.ex;if(!E)return`<div class='card g' style='cursor:default;min-height:0'><div class='k'>Examen final</div><div class='big'>Examen</div><p>Hasta 20 preguntas mezcladas de todos los temas (${p.length} en el banco). Respondes todas y al final ves tu nota y lo que fallaste.</p><button class='b on' data-a='exs'>Empezar examen</button></div>`;
+if(E.i>=E.q.length){const w=E.q.filter((k,n)=>E.r[n]!=p[k][2]),ok=E.q.length-w.length,n=Math.round(ok/E.q.length*100);return`<div class='card g' style='cursor:default;min-height:0'><div class='k'>Resultado</div><div class='big'>${ok} / ${E.q.length} · ${n}%</div><p>${n>=80?'Excelente dominio.':n>=60?'Aprobado: repasa lo que fallaste.':'Repasa los temas y vuelve a intentarlo.'}</p></div>${w.map(k=>`<details class='g'><summary>${p[k][0]}</summary><p>Tema ${p[k][3]}. Correcta: ${p[k][1][p[k][2]]}</p></details>`).join('')}<button class='b on' data-a='exs'>Repetir examen</button>`}
+const q=p[E.q[E.i]];return`<div class='q g'><div class='k'>Pregunta ${E.i+1} de ${E.q.length} · ${q[3]}</div><p>${q[0]}</p>${q[1].map((o,i)=>`<button class='b opt' data-a='exa' data-v='${i}'>${o}</button>`).join('')}</div>`}
+A.addEventListener('focusin',e=>{if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName))document.body.classList.add('kb')});
+A.addEventListener('focusout',()=>document.body.classList.remove('kb'));
+function fullReset(){clearTimeout(S.rt);for(const x in DK)S.k[x]=[];sv();try{localStorage.removeItem('sshk')}catch(e){}S.sc=S.tt=S.st=S.gs=S.gt=0;S.i=0;S.only=false;S.f=false;S.rc=0;S.Q=null;S.G=null;S.ord=null;S.q='';S.pop=false}
+A.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,v=b.dataset.v,l=lst(),i=l[S.i];
+if(a=="v"){S.v=+v;S.d=VD[S.v][0];S.i=0;S.f=false;S.ord=null;S.Q=null;S.sc=S.tt=S.st=0;S.q=""}else if(a=="ga"){const G=S.G;if(G&&G.s==null){G.s=+v;S.gt=(S.gt|0)+1;if(G.s==(G.t?SQ[G.a][2]:FACT[G.a][1]))S.gs=(S.gs|0)+1}}else if(a=="exs"){exStart()}else if(a=="exa"){S.ex.r.push(+v);S.ex.i++}else if(a=="gk"){S.gk=v;S.G=null;S.gs=S.gt=0}else if(a=="gn")S.G=null;else if(a=="m"){S.m=v;S.f=false;S.q="";S.rc=0}else if(a=="d"){S.d=v;S.i=0;S.f=false;S.ord=null;S.Q=null;S.sc=S.tt=S.st=0}
+else if(a=="flip"){S.f=!S.f;S.pop=true}
+else if(a=="know"){if(i!=null&&!kn().includes(i)){kn().push(i);sv()}if(!S.only)S.i++;S.f=false;S.pop=true}
+else if(a=="rev"){if(i!=null){const j=kn().indexOf(i);if(j>-1){kn().splice(j,1);sv()}}S.i++;S.f=false;S.pop=true}
+else if(a=="next"){S.i++;S.f=false;S.pop=true}else if(a=="prev"){S.i--;S.f=false;S.pop=true}
+else if(a=="shuf"){S.ord=shuf(its().map((_,i)=>i));S.i=0;S.f=false;S.pop=true}
+else if(a=="only"){S.only=!S.only;S.i=0;S.f=false}
+else if(a=="ans"){if(S.Q.s!=null)return;S.Q.s=+v;S.tt++;if(S.Q.s==S.Q.a){S.sc++;S.st++}else S.st=0}
+else if(a=="nq")nq();
+else if(a=="rs"){if(S.rc){fullReset()}else{S.rc=1;clearTimeout(S.rt);S.rt=setTimeout(()=>{S.rc=0;if(document.getElementById('pg'))rv()},3000)}}
+else if(a=="exp"||a=="imp"){const t=document.getElementById('bk'),m=document.getElementById('bm');if(a=="exp"){t.value=JSON.stringify(S.k);m.textContent='Código generado. Cópialo y guárdalo.'}else{try{const o=JSON.parse(t.value);if(!o||typeof o!='object'||!Object.keys(DK).some(x=>Array.isArray(o[x])))throw 0;for(const x in DK)S.k[x]=cl(o[x],DK[x].it.length);sv();m.textContent='Progreso importado correctamente.'}catch(x){m.textContent='Código no válido. Revisa que esté completo.'}}return}
+(a=="m"||a=="d"||a=="v")?r():rv()});
+A.addEventListener("input",e=>{if(e.target.id=="sq"){S.q=e.target.value;cancelAnimationFrame(S.raf);S.raf=requestAnimationFrame(()=>{const t=document.getElementById("tl");if(t)t.innerHTML=S.m=="learn"?ll():S.m=="apt"?al():S.m=="sudo"?sl():tl()})}});
+document.addEventListener("keydown",e=>{if(S.m!="card"||e.ctrlKey||e.metaKey||e.altKey||e.target.closest("input,textarea,button,summary"))return;const k=e.key.toLowerCase(),c=k=="arrowright"?"next":k=="arrowleft"?"prev":(k==" "||k=="enter"||k=="arrowup"||k=="arrowdown")?"flip":k=="k"?"know":k=="r"?"rev":null;if(!c)return;e.preventDefault();const b=document.createElement("b");b.dataset.a=c;A.append(b);b.click();b.remove()});
+r();
+(()=>{let sp=document.getElementById('sp'),n=document.getElementById('sn'),b=document.getElementById('sb'),m=document.getElementById('sm'),T=['Abriendo TCP/22…','Intercambiando claves…','Verificando host…','Autenticando usuario…','Sesión abierta'],d=matchMedia('(prefers-reduced-motion:reduce)').matches?500:2400,t0=performance.now();
+const f=t=>{const p=Math.min(1,(t-t0)/d),v=Math.round(100*(1-Math.pow(1-p,2.2)));n.textContent=v;b.style.transform='scaleX('+v/100+')';m.textContent=T[Math.min(4,v/21|0)];if(p<1)requestAnimationFrame(f);else{sp.classList.add('out');setTimeout(()=>sp.remove(),500)}};sp.onclick=()=>{t0=-9e9};requestAnimationFrame(f)})();
+</script></body></html>
